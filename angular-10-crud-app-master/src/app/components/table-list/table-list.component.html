@@ -1,0 +1,43 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="name"/>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Table List</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let table of tables; let i = index" [class.active]="i == currentIndex" (click)="setActiveTables(table, i)">
+        {{ table.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentTable">
+      <h4>Table</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentTable.name }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentTable.description }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/tables/{{ currentTable.id }}">
+        Edit
+      </a>
+      <button class="badge badge-danger mr-2" (click)="deleteTable()">
+        Delete
+      </button>
+    </div>
+    <div *ngIf="!currentTable">
+      <br/>
+      <p>Choose table for detail...</p>
+    </div>
+  </div>
+</div>

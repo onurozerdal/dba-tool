@@ -1,0 +1,23 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">DBA</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="tables" class="nav-link">Tables</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="addTable" class="nav-link">Add Table</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="columns" class="nav-link">Columns</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="addColumn" class="nav-link">Add Column</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

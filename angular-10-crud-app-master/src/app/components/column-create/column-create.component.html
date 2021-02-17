@@ -1,0 +1,46 @@
+<div style="width: 400px; margin: auto;">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="tableId">Table</label>
+      <select formControlName="tableId" id="tableId" style="margin-left: 20px">
+        <option value="">Select Table...</option>
+        <option *ngFor="let table of tables" [ngValue]="table.id">{{table.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+        required
+        [(ngModel)]="column.name"
+        name="title"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="dataType">Data Type</label>
+      <select formControlName="dataType" id="dataType" style="margin-left: 20px">
+        <option value="">Select Data Type...</option>
+        <option *ngFor="let dataType of dataTypes" [ngValue]="dataType.value">{{dataType.key}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="tag">Tag</label>
+      <input
+        class="form-control"
+        id="tag"
+        formControlName="tag"
+        required
+        [(ngModel)]="column.tag"
+        name="tag"
+      />
+    </div>
+
+    <button (click)="saveColumn()" class="btn btn-success">Submit</button>
+  </form>
+</div>

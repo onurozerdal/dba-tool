@@ -1,0 +1,49 @@
+<div class="list row">
+  <div class="col-md-12">
+    <form [formGroup]="form">
+      <select formControlName="tableId">
+        <option value="">Select Table...</option>
+        <option *ngFor="let table of tables" [ngValue]="table.id">{{table.name}}</option>
+      </select>
+      <button class="m-3 btn btn-sm btn-danger" (click)="getColumnsByTableId()">
+        Retrieve Columns
+      </button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h4>Column List</h4>
+    <ul *ngIf="columns" class="list-group">
+      <li class="list-group-item" *ngFor="let column of columns; let i = index" [class.active]="i == currentIndex"
+          (click)="setActiveColumns(column, i)">
+        {{ column.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <div *ngIf="currentColumn">
+      <h4>Column</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentColumn.name }}
+      </div>
+      <div>
+        <label><strong>Data Type:</strong></label> {{ currentColumn.dataTypeText }}
+      </div>
+      <div>
+        <label><strong>Tag:</strong></label> {{ currentColumn.tag }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/columns/{{ currentColumn.id }}">
+        Edit
+      </a>
+      <button class="badge badge-danger mr-2" (click)="deleteColumn()">
+        Delete
+      </button>
+    </div>
+
+    <div *ngIf="!currentColumn">
+      <br/>
+      <p>Choose column for detail...</p>
+    </div>
+  </div>
+</div>
